@@ -1,46 +1,53 @@
+// Assignment code here
+
 var length
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var number = "0123456789";
-var specialCharacters = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+var numeric = '0123456789';
+var punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
 
+//How long do you want your password to be? (8-128 characters)
+
+//What type of characters do you want your password to have? (uppercase/lowercase letters, numbers, special characters)
 function generatePassword() { 
 
   var length = parseInt(
     prompt('How many characters would you like your password to contain?')
   );
 
-  var numberCharacters = confirm(
-    "Click 'ok' to include numbers in your password or 'cancel' to not include any numbers."
+  var numericCharacters = confirm(
+    "Click 'ok' to include numbers in your password or 'cancel' to exclude numbers."
   );
 
   var lowercaseCharacters = confirm(
-    "Click 'ok' to include lowercase letters in your password or 'cancel' to not include any lowercase letters."
+    "Click 'ok' to include lowercase letters in your password or 'cancel' to exclude lowercase letters."
   );
 
   var uppercaseCharacters = confirm(
-    "Click 'ok' to include uppercase letters in your password or 'cancel' to not include any uppercase letters."
+    "Click 'ok' to include uppercase letters in your password or 'cancel' to exclude uppercase letters."
   );
 
   var specialCharacters = confirm(
-    "Click 'ok' to include special characters in your password or 'cancel' to not include any special characters."
+    "Click 'ok' to include special characters in your password or 'cancel' to exclude special characters."
   );
 
-  //checking
+  //check options
   if (length < 8) {
-    alert('Password length must have at least 8 characters');
+    alert('Password length must be at least 8 characters');
+    // return;
   }
 
   if (length > 128) {
-    alert('Password length has to be less than 129 characters');
+    alert('Password length must less than 129 characters');
+    // return;
   }
 
   var randomPassword = ""
 
   var characterOptions = ""
 
-  if (numberCharacters === true) {
-    characterOptions = characterOptions + number;
+  if (numericCharacters === true) {
+    characterOptions = characterOptions + numeric;
   }
 
   if (lowercaseCharacters === true) {
@@ -52,7 +59,7 @@ function generatePassword() {
   }
   
   if (specialCharacters === true) {
-    characterOptions = characterOptions + specialCharacters;
+    characterOptions = characterOptions + punctuation;
   }
   
   for (var i = 0; i < length; i++) {
@@ -63,6 +70,10 @@ function generatePassword() {
 
   return randomPassword;
 }
+
+
+//DON'T CHANGE ANYTHING BELOW THIS LINE!!!
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
